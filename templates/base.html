@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="with=device-width, initial-scale=1">
+	<title>BIG Dashboard - {% block subtitle %}{% endblock %}</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/{{ theme }}/bootstrap.min.css">
+	{% block additional_head %}{% endblock %}
+	<style type="text/css">
+		body {
+			padding-top: 50px;
+		}
+		footer {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		@media screen and (max-width: 768px) {
+			.row-offcanvas {
+				position: relative;
+				-webkit-transition: all 0.25s ease-out;
+				-moz-transition: all 0.25s ease-out;
+				transition: all 0.25s ease-out;
+			}
+
+			.row-offcanvas-left .sidebar-offcanvas { left: -15% }
+			.row-offcanvas-left.active { left: -15% }
+
+			.sidebar-offcanvas {
+				position: absolute;
+				top: 0;
+				width: 33%;
+				margin-left: 10px;
+			}
+		}
+		.nav-sidebar {
+			margin-right: -15px;
+			margin-bottom: 20px;
+			margin-left: -15px;
+		}
+		.nav-sidebar > li > a {
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+		.content-area { padding: 20px; }
+		@media (min-width: 768px) {
+			.content-area {
+				padding-right: 40px;
+				padding-left: 40px;
+			}
+		}
+		.content-area .page-header { margin-top: 0; }
+	</style>
+	<!--[if lt IE 9]>
+	<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#top">BIG Dashboard</a>
+			</div>
+
+			<div class="navbar-collapse collapse">
+				{% block navbar_button %}{% endblock %}
+				<ul class="nav navbar-nav navbar-right">
+					{% if admin == True %}<li><a href="/users/list">Admin</a></li>{% endif %}
+					<li><a href="/verifyakey">Verify Amazon Keys</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+
+						<ul class="dropdown-menu">
+							<li><a href="/theme/amelia">Amelia</a></li>
+							<li><a href="/theme/cerulean">Cerulean</a></li>
+							<li><a href="/theme/cosmo">Cosmo</a></li>
+							<li><a href="/theme/cyborg">Cyborg</a></li>
+							<li><a href="/theme/darkly">Darkly</a></li>
+							<li><a href="/theme/flatly">Flatly</a></li>
+							<li><a href="/theme/journal">Journal</a></li>
+							<li><a href="/theme/lumen">Lumen</a></li>
+							<li><a href="/theme/readable">Readable</a></li>
+							<li><a href="/theme/simplex">Simplex</a></li>
+							<li><a href="/theme/slate">Slate</a></li>
+							<li><a href="/theme/spacelab">Spacelab</a></li>
+							<li><a href="/theme/superhero">Superhero</a></li>
+							<li><a href="/theme/united">United</a></li>
+							<li><a href="/theme/yeti">Yeti</a></li>
+						</ul>
+					</li>
+					<li>
+						<form class="navbar-form" action="{{ searchpath }}/search" method="get">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+							<input type="text" class="form-control" placeholder="Search" name="q">
+						</form>
+					</li>
+					<li>
+						<a href="/users/logout"><i class="glyphicon glyphicon-user"></i> Log Out</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row row-offcanvas row-offcanvas-left">
+			<div class="col-sm-2 col-md-1 sidebar-offcanvas" id="sidebar" role="navigation">
+				<ul class="nav nav-sidebar">
+					<li><a href="/">Home</a></li>
+					<li><a href="/astores">Amazon aStores</a></li>
+					<li><a href="/customs">Custom Sites</a></li>
+					<li><a href="/replicated">Replicated Sites</a></li>
+					<li><a href="/wordpress">WordPress Sites</a></li>
+				</ul>
+			</div>
+
+			<div class="col-sm-10 col-md-11 content-area">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<p class="text-center">©2014 Buckeye Impact Group</p>
+		<p class="text-center"><a href="/users/changepw">Change Password</a></p>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	{% block additional_script %}{% endblock %}
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			$('[data-toggle=offcanvas]').click(function() {
+				$('.row-offcanvas').toggleClass('active');
+			});
+		});
+	</script>
+</body>
+</html>

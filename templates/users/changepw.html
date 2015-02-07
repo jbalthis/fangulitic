@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block subtitle %}Change Password{% endblock %}
+{% block content %}
+				<h1 class="page-header">Change your password.</b></h1>
+				<div class="sub-header">{% include "flash.html" %}
+				</div>
+				<div class="col-md-4">
+				<form role="form" class="form-horizontal" action="/users/changepw" method="post">
+					{{ form.csrf_token }}
+					<div class="form-group">
+						<input type="password" class="form-control" name="oldpass" placeholder="Old Passsword">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="newpass1" placeholder="New Password">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="newpass2" placeholder="Repeat">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Save</button>
+						<a href="/users/changepw" class="btn btn-default">Cancel</a>
+					</div>
+				</form>
+				</div>
+				<div class="col-md-8"></div>
+{% endblock %}
