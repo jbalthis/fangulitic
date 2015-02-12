@@ -1,4 +1,5 @@
 Flask
+Flask-Triangle
 Flask-Login
 Flask-Admin
 Flask-Principal
