@@ -40,42 +40,26 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browserhappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        {%- block navbar %}
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
 
-                    <div class="nav-header"></div>
-
-                    <div class="collapse nav-collapse">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i>&nbsp;Platforms&nbsp;<span class="caret"></span> </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#"><i class=""></i>&nbsp;Routing</a></li>
-                                    <li><a href="#"><i class=""></i>&nbsp;Switching</a></li>
-                                    <li><a href="#"><i class=""></i>&nbsp;Wireless</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="fa fa-connectdevelop"></i>&nbsp;Solutions</a></li>
-                            <li><a href="#"><i class="fa fa-cogs"></i>&nbsp;Services</a></li>
-                            <li><a href="#"><i class="fa fa-university"></i>&nbsp;Training</a></li>
-                            <li><a href="#"><i class="fa fa-heart-o"></i>&nbsp;Competitive</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
-                                <ul></ul>
-                            </li>
-
-
-                        </ul>
+                    <div class="nav-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Brand</a>
                     </div>
+
+                    {%- block navbar %}
+                    {%- endblock navbar %}
 
                 </div>
             </div>
-        </div>
-        {% endblock navbar %}
+        </nav>
 
 
         {%- block page_content %}
@@ -89,19 +73,9 @@
 
 
         <!-- Piwik -->
-        <script type="text/javascript">
-            var _paq = _paq || [];
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-                var u="//eng-tme3.cisco.com/";
-                _paq.push(['setTrackerUrl', u+'piwik.php']);
-                _paq.push(['setSiteId', 1]);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-        </script>
-        <noscript><p><img src="//eng-tme3.cisco.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+            <!-- TODO: Insert Tracking Code -->
+
         <!-- End Piwik Code -->
 
         {%- endblock scripts %}
