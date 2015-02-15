@@ -1,0 +1,7 @@
+<div id="sidebar" class="col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+
+        <li ng-repeat="link in sidebarLinks" role="presentation"><a ui-sref="authenticated.{{ link }}({ dashTitle: {{ link }} })" id="{{ link }}" ui-sref-active="active">{{ link }}</a></li>
+
+    </ul>
+</div>

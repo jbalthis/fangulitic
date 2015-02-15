@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Fangulitic{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
-{% block navbar %}
-<div ui-view></div>
+{% block header %}
+<div ui-view="headerView"></div>
 {% endblock %}
 
-{% block page_content %}
-<h1>This is where the magic happens!</h1>
+{% block sidebar %}
+<div ui-view="sidebarView"></div>
+{% endblock %}
+
+{% block content_title %}
+<h3>ENG-TME Dashboard</h3>
+{% endblock %}
+
+{% block content %}
+<div ui-view="contentView"></div>
+{% endblock %}
+
+{% block footer %}
+    <div ui-view="footerView"></div>
 {% endblock %}
