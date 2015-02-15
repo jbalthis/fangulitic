@@ -1,5 +1,6 @@
-import os
+# TODO: finish up this config!
 
+import os
 
 basedir = os.path
 
