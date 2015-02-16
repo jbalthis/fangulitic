@@ -5,8 +5,7 @@
 
 # import libraries
 from flask import Flask
-#from flask_mongoengine import MongoEngine, MongoEngineSessionInterface
-from flask_mongoalchemy import MongoAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_triangle import Triangle
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
@@ -22,7 +21,7 @@ triangle = Triangle()
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
-db = MongoAlchemy()
+db = SQLAlchemy()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -44,8 +43,16 @@ def create_app(config_name):
     flask_debugtoolbar.DebugToolbarExtension(app)
     #app.session_interface = MongoEngineSessionInterface(db)
 
+    # =======================#
+    # Blueprint Registration #
+    # =======================#
+
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+
 
     return app
 

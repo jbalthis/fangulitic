@@ -3,7 +3,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import url_for
 from . import db
 
-class User(db.Document):
+class User(db.Model):
+
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
     password_hash = db.StringField(max_length=128)
 
     @property
@@ -18,8 +28,16 @@ class User(db.Document):
         return check_password_hash(self.password_hash, password)
 
 
-class Role(db.Document):
-    role_id = db.StringField()
+class Role(db.Model):
+
+    __tablename__ = 'roles'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    users = db.relationship('User', backref='role')
+
+    def __repr__(self):
+        return '<Role %r>' % self.name
 
 
 class Page(db.Document):
