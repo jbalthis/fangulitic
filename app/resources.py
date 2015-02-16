@@ -1,6 +1,6 @@
 from monkful.resources import MongoEngineResource
-from app.documents import Post
-from app.serializers import PostSerializer
+from .documents import Post
+from .serializers import PostSerializer
 
 
 class PostResource(MongoEngineResource):

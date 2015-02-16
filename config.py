@@ -4,7 +4,6 @@
 """
 
 import os
-from flask_mongoengine.panels import MongoDebugPanel
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -29,22 +28,24 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
-    MONGODB_SETTINGS = {
-        'db': 'fangulitic_dev_db',
-        'host': 'localhost',
-        'port': 27017
-    }
+    MONGODB_SETTINGS = 'host=mongodb://localhost:27017/fangulitic_dev_db'
+    MONGOALCHEMY_DATABASE = 'fangulitic_dev_db'
+    DEBUG_TB_PANELS = [
+        'flask_debugtoolbar.panels.timer.TimerDebugPanel',
+        'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
+        'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel',
+        'flask_debugtoolbar.panels.template.TemplateDebugPanel',
+        # 'flask_debugtoolbar.panels.sqlalchemy.SQLAlchemyDebugPanel',
+        # 'flask_debugtoolbar.panels.logger.LoggingDebugPanel',
+        'flask_debugtoolbar_mongo.panel.MongoDebugPanel',
+        'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
+        'flask_debugtoolbar.panels.versions.VersionDebugPanel',
+    ]
     DEBUG_TB_INTERCEPT_REDIRECTS = False
-    # DEBUG_TB_PANELS = [MongoDebugPanel]
 
 
 class ProductionConfig(Config):
-
-    MONGODB_SETTINGS = {
-        'db': 'fangulitic_db',
-        'host': 'localhost',
-        'port': 27017
-    }
+    MONGODB_SETTINGS = 'host=mongodb://localhost:27017/fangulitic_db'
 
 
 config = {
