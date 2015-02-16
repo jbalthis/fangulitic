@@ -9,7 +9,7 @@ from flask import render_template, redirect, session, url_for
 from . import main
 from .forms import NameForm
 from .. import db
-from ..documents import User
+from ..models import User
 
 
 @main.route('/', methods=['GET', 'POST'])
