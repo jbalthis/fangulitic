@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Oops.. Server Error{% endblock %}
+
+{% block header %}
+<div ui-view="headerView"></div>
+{% endblock %}
+
+{% block sidebar %}
+<div ui-view="sidebarView"></div>
+{% endblock %}
+
+{% block content %}
+<h3>Oops...</h3>
+<hr>
+<p>something went wrong with the server...   :'(</p>
+{% endblock %}
+
+{% block footer %}
+<div ui-view="footerView"></div>
+{% endblock %}

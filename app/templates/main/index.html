@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block header %}
+<div ui-view="headerView"></div>
+{% endblock %}
+
+{% block sidebar %}
+<div ui-view="sidebarView"></div>
+{% endblock %}
+
+{% block content %}
+<div ui-view="contentView"></div>
+{% endblock %}
+
+{% block footer %}
+    <div ui-view="footerView"></div>
+{% endblock %}

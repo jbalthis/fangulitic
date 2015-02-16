@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{%- block doc %}
+<html class="no-js" lang="en" ng-app="fangulitic">
+{%- block html %}
+    <head>
+    {%- block head %}
+        <title>{% block title %}{% endblock title %}</title>
+
+        {%- block metas %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {%- endblock metas %}
+
+        {% block icons %}
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="favicon" href="{{ url_for('static', filename='assets/img/favicon.ico') }}">
+        {% endblock icons  %}
+
+        {% block styles %}
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.2/superhero/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='libs/ui-grid/css/ui-grid.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/dashboard.css') }}">
+        {% endblock styles %}
+
+        {% block head_scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+        <script src="{{ url_for('static', filename='libs/ui-grid/js/ui-grid.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='fangulitic/fangulitic.js') }}"></script>
+        <script src="{{ url_for('static', filename='fangulitic/controllers.js') }}"></script>
+        <script src="{{ url_for('static', filename='fangulitic/services.js') }}"></script>
+        {%- endblock head_scripts %}
+    {% endblock head %}
+    </head>
+    <body {% block body_attribs %}{% endblock body_attribs %}>
+    {% block body %}
+
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browserhappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        {% block header %}{% endblock %}
+
+        {% block sidebar %}{% endblock %}
+
+        {% block content %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+
+        {% block scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+        <!-- Piwik -->
+
+            <!-- TODO: Insert Tracking Code -->
+
+        <!-- End Piwik Code -->
+
+        {%- endblock scripts %}
+    {%- endblock body %}
+    </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}
