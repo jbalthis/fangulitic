@@ -5,12 +5,12 @@
 
 from datetime import datetime
 from flask import render_template, redirect, session, url_for
+from flask_login import login_required
 
 from . import main
 from .forms import NameForm
 from .. import db
 from ..models import User
-
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -38,3 +38,8 @@ def index():
         known=session.get('known', False),
         current_time=datetime.utcnow()
     )
+
+@main.route('/secret')
+@login_required
+def secret():
+    return 'Must be authernticated!'
