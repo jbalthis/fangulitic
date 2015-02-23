@@ -343,3 +343,6 @@ Fangulitic.config(
     }
 );
 
+Fangulitic.constant('authUrl',
+    'http://localhost:5000/auth/login'
+);
